@@ -6,29 +6,30 @@
 
 	<div id="navcontainer">
 		<!-- Start Navigation -->
-
 		<ul>
-			<li><a href="index.html"
-					rel="self">Home</a></li>
+			<li><a href="index.html" rel="self">Home</a></li>
 
-					<li><a href="https://raw.githubusercontent.com/traitsjs/traits.js/v1.0.1/src/traits.js" target="_top">Download</a></li>
+			<li><a href="https://raw.githubusercontent.com/traitsjs/traits.js/v1.0.1/src/traits.js" target="_top">Download</a></li>
 
-			<li><a href="api.html"
-					rel="self"
-					id="current"
-					name="current">API</a></li>
+			<li><a href="api.html" rel="self">API</a></li>
 
-			<li><a href="tutorial.html"
-					rel="self">Tutorial</a></li>
+			<li><a href="tutorial.html" rel="self">Tutorial</a></li>
 
-			<li><a href=
-			"https://github.com/traitsjs/traits.js/issues" target="_top">Bug Tracker</a></li>
+			<li><a href="https://github.com/traitsjs/traits.js/issues" target="_top">Bug Tracker</a></li>
 
 			<li><a href="http://groups.google.com/group/traits-js?hl=en" target="_top">Discuss</a></li>
 
 			<li><a href="http://howtonode.org/traitsjs" target="_top">HowToNode article</a></li>
-			
+
 			<li><a href="http://traitsjs.github.io/traits.js-website/files/traitsJS_PLASTIC2011_final.pdf" target="_top">Paper</a></li>
 		</ul>
-	</div><!-- End navigation -->
+	</div>
+	<!-- End navigation -->
 </div>
+<script type="text/javascript">
+	var navlinks = document.querySelectorAll('#navcontainer a');
+	[].slice.call(navlinks).forEach(function(a) {
+		if(a.href === location.href)
+			a.classList.add('current'); // IE10+ and everyone else
+	});
+</script>

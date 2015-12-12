@@ -248,11 +248,11 @@ img {
 	margin-top: 5px;
 }
 
-#navcontainer #current {
+#navcontainer .current {
 	color: #ffffff; 
 }
 
-#navcontainer #current:hover {
+#navcontainer .current:hover {
 }
 
 #navcontainer .currentAncestor {
