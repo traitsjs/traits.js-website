@@ -1,0 +1,3 @@
+[submodule "traits.js"]
+	path = traits.js
+	url = https://github.com/traitsjs/traits.js.git
