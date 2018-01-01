@@ -18,7 +18,7 @@
         type="text/css"
         media="screen"
         href="sidebar.css" />
-  <script>
+  <script type="text/javascript">
   function toggleExample(id) {
     var elt = document.getElementById(id);
     if (elt.style.display === 'none' || elt.style.display === '') {
@@ -54,16 +54,16 @@
         <!-- sidebar content you enter in the page inspector -->
         <strong>API</strong>
         <ul class="api-index">
-        <li><a href="#Trait">Trait()</a>
-        <li><a href="#compose">Trait.compose</a>
-        <li><a href="#resolve">Trait.resolve</a>
-        <li><a href="#override">Trait.override</a>
-        <li><a href="#required">Trait.required</a>
-        <li><a href="#create">Trait.create</a>
-        <li><a href="#eqv">Trait.eqv</a>
-        <li><a href="#object">Trait.object</a>
-        <li><a href="#Object_create">Object.create</a>
-        <li><a href="#Object_getOwnProperties">Obj.getOwnProperties</a>
+          <li><a href="#Trait">Trait()</a></li>
+          <li><a href="#compose">Trait.compose</a></li>
+          <li><a href="#resolve">Trait.resolve</a></li>
+          <li><a href="#override">Trait.override</a></li>
+          <li><a href="#required">Trait.required</a></li>
+          <li><a href="#create">Trait.create</a></li>
+          <li><a href="#eqv">Trait.eqv</a></li>
+          <li><a href="#object">Trait.object</a></li>
+          <li><a href="#Object_create">Object.create</a></li>
+          <li><a href="#Object_getOwnProperties">Obj.getOwnProperties</a></li>
         </ul>
          <!-- sidebar content such as the blog archive links -->
       </div><!-- End sidebar content -->
@@ -83,16 +83,17 @@
             <p><strong>Trait</strong> (aka the "Trait constructor") takes a record
             describing required and provided properties and returns a trait containing
             these properties.
-
+            </p>
             <p>The record argument is usually an object literal. Both its identity and
                its prototype chain are irrelevant when constructing a trait.
-
+            </p>
             <p>Data properties bound to function objects in the argument are marked
                as <em>method</em> properties in the resulting trait. The prototype of these
                function objects is frozen by <strong>Trait</strong>.
-
+            </p>
             <p>Data properties bound to the <a href="#required">Trait.required</a> singleton
                are marked as <em>required</em> properties in the resulting trait.
+            </p>
           </div>
           <a id="Trait-example-btn"
              onclick="toggleExample('Trait-example')"
@@ -113,25 +114,26 @@ var t2 = <strong>Trait</strong>({a:<span class="required">Trait.required</span>}
             <p><strong>compose</strong> takes any number of argument traits and
             returns a composite trait combining all of the own properties
             of the argument traits.
-
+            </p>
             <p>If two or more traits have own properties with the same name, the
               composite trait will contain a conflict property for that name.
               In an Ecmascript 5 environment, conflicting properties are represented
               as accessors that throw upon access. In an Ecmascript 3 environment,
               they are represented as functions that throw when called.
-
+            </p>
             <p>Two properties are <em>not</em> in conflict if either of them
             is a <a href="#required">required</a> property, or if they refer to
             identical values (as determined by <tt>===</tt>).
-
+          </p>
             <p><strong>compose</strong> is a commutative and associative operation,
               and the ordering of its arguments does not affect its return value.
-
+            </p>
             <p>If <strong>compose</strong> is invoked with less than 2 arguments, then:
-               <ul>
-                 <li><tt>compose(t)</tt> returns a trait <a href="#eqv">equivalent</a> to <tt>t</tt>.
-                 <li><tt>compose()</tt> returns an empty trait.
-               </ul>
+              <ul>
+                <li><tt>compose(t)</tt> returns a trait <a href="#eqv">equivalent</a> to <tt>t</tt>.</li>
+                <li><tt>compose()</tt> returns an empty trait.</li>
+              </ul>
+            </p>
           </div>
           <a id="compose-example-btn"
              onclick="toggleExample('compose-example')"
@@ -154,21 +156,22 @@ var t = Trait.<strong>compose</strong>(t1, t2);
           any object that maps property names either to truthy values that will be coerced to <em>String</em>
           or to falsy values (such as <tt>undefined</tt>) which are interpreted as excluding the given
           property.
-
+          </p>
           <p><strong>resolve</strong> can be used to rename or exclude properties that
              would be in conflict in subsequent compositions. <strong>resolve</strong> first
              excludes properties, then renames properties. Required properties are not affected
              by <strong>resolve</strong>.
-
+          </p>
           <p>Renaming a property <tt>p</tt> to <tt>p'</tt> introduces a new binding for <tt>p'</tt>
             in the resolved trait (if <tt>p'</tt> already exists, it is marked in conflict). The old
             property name <tt>p</tt> becomes a required property of the trait. Likewise, excluding a
             property <tt>p</tt> turns <tt>p</tt> into a required property of the trait.
-
+          </p>
           <p>Renaming a property does not affect references to that property in the method
              body of trait methods.
              Any such references will continue to refer to the original name.
-          </div>
+          </p>
+        </div>
           <a id="resolve-example-btn"
              onclick="toggleExample('resolve-example')"
              class="example-button">Show example</a>
@@ -186,24 +189,25 @@ var t2 = Trait.<strong>resolve</strong>({a: undefined}, Trait({a: 1, b: 2}));
         <div id="override" class="api">
           <span class="api-signature">Trait.<strong>override</strong>(t<sub>1</sub> : <em>Trait</em>, t<sub>2</sub> : <em>Trait</em>, ...) : <em>Trait</em></span>
           <div class="api-text">
-          <p><strong>override</strong> takes any number of argument traits and
+            <p><strong>override</strong> takes any number of argument traits and
             returns a composite trait combining all of the own properties of the argument traits.
-
+            </p>
             <p>If two or more traits have own properties with the same name, the
               property is overridden, with precedence from left to right. This implies
               that properties of the leftmost trait are never overridden. Required properties
               are always overridden by non-required properties. <strong>override</strong>
               never creates new conflicts.
-
+            </p>
             <p><strong>override</strong> is associative: <tt>override(t1,t2,t3)</tt> is
               equivalent to <tt>override(t1, override(t2, t3))</tt> or to
               <tt>override(override(t1, t2), t3)</tt>. <strong>override</strong> is not commutative: <tt>override(t1,t2)</tt> is not equivalent to <tt>override(t2,t1)</tt>.
-
+            </p>
             <p>If <strong>override</strong> is invoked with less than 2 arguments, then:
-               <ul>
-                 <li><tt>override(t)</tt> returns a trait <a href="#eqv">equivalent</a> to <tt>t</tt>.
-                 <li><tt>override()</tt> returns an empty trait.
-               </ul>
+              <ul>
+                <li><tt>override(t)</tt> returns a trait <a href="#eqv">equivalent</a> to <tt>t</tt>.
+                <li><tt>override()</tt> returns an empty trait.
+              </ul>
+            </p>
           </div>
           <a id="override-example-btn"
              onclick="toggleExample('override-example')"
@@ -223,9 +227,11 @@ var t = Trait.<strong>override</strong>(t1, t2);
           <div class="api-text">
           <p><strong>required</strong> is a singleton object that serves as a placeholder
             for a trait's required properties.
+          </p>
           <p>In principle, <strong>required</strong> should only be used inside
             the record definition passed to the <a href="#Trait">Trait constructor</a>.
-          </div>
+          </p>
+        </div>
           <a id="required-example-btn"
              onclick="toggleExample('required-example')"
              class="example-button">Show example</a>
@@ -244,7 +250,7 @@ var t = Trait({
           <div class="api-text">
           <p><strong>create</strong> takes a prototype object and a trait and returns an
              instantiation of the trait. The instantiated object's prototype is <tt>proto</tt>.
-
+          </p>
           <p><strong>create</strong> throws
             <ul>
               <li>an <tt>Error('Missing required property: name');</tt>
@@ -252,6 +258,7 @@ var t = Trait({
               <li>an <tt>Error('Remaining conflicting property: name');</tt>
             if the trait contains a conflicting property <tt>name</tt>.
             </ul>
+          </p>
           <p><strong>create</strong> is similar to the Ecmascript 5 built-in
             <tt>Object.create</tt> except that it generates high-integrity, "final" objects.
             In addition to creating a new object from a trait, it also ensures that:
@@ -261,13 +268,16 @@ var t = Trait({
                   bound to the instantiated object. Hence, even if methods of the trait instance
                   are extracted and used as funargs, <tt>this</tt> will retain its correct binding.
             </ul>
+          </p>
           <p>Because all methods of an instance created by this function are bound functions,
              their <tt>this</tt> pseudovariable is no longer late-bound. Hence, such instances
              should not be used as the prototype of other objects (because <tt>this</tt> would
              not refer to the delegating child object). That is why these instances are called
              "final" objects.
+          </p>
           <p>Use <a href="#Object_create">Object.create</a> instead of <strong>Trait.create</strong> if you want your trait instances to remain malleable or if you want them to act
             as prototypes of other objects.
+          </p>
           </div>
           <a id="create-example-btn"
              onclick="toggleExample('create-example')"
@@ -289,11 +299,13 @@ var o = <strong>Trait.create</strong>(
           <span class="api-signature">Trait.<strong>eqv</strong>(t<sub>1</sub> : <em>Trait</em>, t<sub>2</sub>: <em>Trait</em>) : <em>boolean</em></span>
           <div class="api-text">
           <p><strong>eqv</strong> takes two traits and returns whether or not they are equivalent.
+          </p>
           <p>A trait t1 is equivalent to a trait t2 if both define the same set
              of property names and for all property names n, the property descriptor t1[n]
              is equivalent to the property descriptor t2[n]. Two property descriptors are
              equivalent if they have the same value, accessors and attributes.
-          <p>The value of two property descriptors is compared using <tt>===</tt>.
+          </p>
+          <p>The value of two property descriptors is compared using <tt>===</tt>.</p>
           </div>
           <a id="eqv-example-btn"
              onclick="toggleExample('eqv-example')"
@@ -314,10 +326,13 @@ var o = <strong>Trait.create</strong>(
           <div class="api-text">
           <p><strong>object</strong> takes as its sole argument a record describing a trait
             and returns an instance of that trait whose prototype is <tt>Object.prototype</tt>.
+          </p>
           <p><tt>Trait.object({...})</tt> is a shorthand notation for:<br>
              <tt>Trait.create(Object.prototype, Trait({...}))</tt>.
+          </p>
           <p>Think of <strong>object</strong> as the equivalent of Javascript's object-literal
              notation for high-integrity objects.
+          </p>
           </div>
           <a id="object-example-btn"
              onclick="toggleExample('object-example')"
@@ -340,9 +355,11 @@ var o = <strong>Trait.object</strong>(
           <p>If traits.js is loaded in an Ecmascript 3 engine and <tt>Object.create</tt>
              does not exist, traits.js defines it. Otherwise, traits.js assumes the built-in
              Ecmascript 5 definition.
+          </p>
           <p><strong>Object.create</strong> takes a prototype object and a trait and
             returns a new instance, whose prototype is <tt>proto</tt> and
             whose properties are described by the trait.
+          </p>
           <p>Passing a trait to the Ecmascript 5 built-in function <tt>Object.create</tt>
              works because traits are represented as property descriptor maps, which is
              the format accepted by this function. Unlike <a href="#create">Trait.create</a>,
@@ -352,17 +369,18 @@ var o = <strong>Trait.object</strong>(
                     properties. Required properties remain as non-enumerable (in ES5)
                     properties bound to <tt>undefined</tt>. Conflicting properties are
                     bound to accessors (in ES5) that throw upon an attempt to get or set the
-                    property value. In ES3, they are bound to a function that throws when called.
-                 <li>Neither the object nor its accessor and method properties are frozen.
+                    property value. In ES3, they are bound to a function that throws when called.</li>
+                  <li>Neither the object nor its accessor and method properties are frozen.</li>
                 <li>The <tt>this</tt> pseudovariable in all accessors and methods of the object
-                    is left unbound.
+                    is left unbound.</li>
               </ul>
-
+          </p>
           <p>Since Ecmascript 3 does not support accessors or the notion of
              non-writable, non-enumerable and non-configurable properties,
              only writable, enumerable and configurable data properties can be
              created using this emulated version of Ecmascript 5's built-in
              <tt>Object.create</tt> function.
+          </p>
           </div>
           <a id="Object_create-example-btn"
              onclick="toggleExample('Object_create-example')"
@@ -386,15 +404,19 @@ var o = <strong>Object.create</strong>(
          <p>If traits.js is loaded in an Ecmascript 3 engine and <tt>Object.getOwnProperties</tt>
             does not exist, traits.js defines it. Otherwise, traits.js assumes the built-in
             Ecmascript 5 definition.
+          </p>
          <p><strong>Object.getOwnProperties</strong> takes a record (usually an object
            literal) as an argument and returns a property descriptor map that describes
            the properties of the record.
+         </p>
          <p>This method can be used to turn any object into a property
             descriptor map. The resulting property descriptor map is a valid trait.
+          </p>
          <p>Unlike <a href="#Trait">the Trait constructor</a>,
             <strong>Object.getOwnProperties</strong> does not transform data properties
             bound to functions into method properties, or data properties bound to
             <a href="#required">Trait.required</a> into required properties.
+          </p>
          </div>
          <a id="Object_getOwnProperties-example-btn"
             onclick="toggleExample('Object_getOwnProperties-example')"
@@ -409,10 +431,10 @@ var pdmap2 = <strong>Object.getOwnProperties</strong>({a: Trait.required });
          </div>
        </div>
 
-       <p>The traits.js API is explained in more detail <a href="http://code.google.com/p/es-lab/wiki/Traits">here</a>. See also: <a href="http://wiki.ecmascript.org/doku.php?id=strawman:traits_semantics">a semi-formal specification</a> of traits based on this library.
+       <p>The traits.js API is explained in more detail <a href="https://github.com/traitsjs/traits.js#introduction">here</a>. See also: <a href="http://wiki.ecmascript.org/doku.php?id=strawman:traits_semantics">a semi-formal specification</a> of traits based on this library.</p>
 
          <!-- AddThis Button BEGIN -->
-         <p><a style="float: right" class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bba2a662567686a"><img src="http://s7.addthis.com/static/btn/v2/lg-bookmark-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bba2a662567686a"></script>
+         <p><a style="float: right" class="addthis_button" href="http://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bba2a662567686a"><img src="http://s7.addthis.com/static/btn/v2/lg-bookmark-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bba2a662567686a"></script></p>
          <!-- AddThis Button END -->
       </div><!-- End content -->
     </div><!-- End main content wrapper -->
@@ -422,20 +444,10 @@ var pdmap2 = <strong>Object.getOwnProperties</strong>({a: Trait.required });
 
   <div id="contentBottom"></div>
 
-  <div id="footer">
-    <!-- Start Footer -->
+  <!-- Start Footer -->
+  {% include footer.html %}
+  <!-- End Footer -->
 
-    <p>© 2010 <a href="http://es-lab.googlecode.com">es-lab</a> |
-    Code: <a href=
-    "http://www.apache.org/licenses/LICENSE-2.0">Apache License
-    2.0</a> | Content: <a href=
-    "http://creativecommons.org/licenses/by/3.0/">Creative Commons
-    3.0 BY</a></p>
-
-    <div id="breadcrumbcontainer">
-      <!-- Start the breadcrumb wrapper -->
-    </div><!-- End breadcrumb -->
-  </div><!-- End Footer -->
   <script type="text/javascript">
 
     var _gaq = _gaq || [];
