@@ -54,17 +54,17 @@
         <div class="intro"><em>traits.js</em> is a minimal, standards-compliant trait
         composition library for Javascript.</div>
         <div class="download">
-          <a href="https://unpkg.com/traits.js@1.1.0/dist/traits.min.js" download>
+          <a href="https://unpkg.com/traits.js@1.1.2/dist/traits.min.js" download>
             <img style="float: left; border: none;"
                  src="images/download.png" height="80px" caption="download"></img>
             <table class="downloadtitle">
               <tr><td><strong>Download</strong></td></tr>
-              <tr><td class="version">v1.1.0</td></tr>
+              <tr><td class="version">v1.1.2</td></tr>
             </table>
           </a>
         </div>
 
-	<p style="clear:both; padding-top: 20px"><b>Update (December 2015):</b> The most recent version of the code lives over on <a href="https://github.com/traitsjs/traits.js">GitHub</a> and is available as an npm package called <a href="https://www.npmjs.com/package/traits.js">traits.js</a> (thanks to Jon Ege Ronnenberg).
+	<p style="clear:both; padding-top: 20px"><b>Update (December 2015):</b> The most recent version of the code lives over on <a href="https://github.com/traitsjs/traits.js">GitHub</a> and is available as an npm package called <a href="https://www.npmjs.com/package/traits.js">traits.js</a> (thanks to Jon Ege Ronnenberg).</p>
 
 	<p style="clear:both; padding-top: 20px"><strike>Here is <a href="http://code.google.com/p/es-lab/source/browse/#svn/trunk/src/traits">the latest development version</a>.<br>traits.js is also available as <a href="https://npmjs.org/package/traits">an npm package</a> named 'traits' (thanks to Nathan Stott).</strike>
 
@@ -77,6 +77,7 @@
         and because trait composition is order-independent (hence more declarative).
         To put it simply: if you combine two traits that define a method with the same name,
         your program will fail. Traits won't automatically give precedence to either one.
+        </p>
 
         <h4>Why traits.js?</h4>
 
@@ -84,17 +85,18 @@
            with the new
            <a href="http://ejohn.org/blog/ecmascript-5-objects-and-properties/">object-manipulation API</a>
           defined on <tt>Object</tt> in <a href="http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-262.pdf">Ecmascript 5th edition</a>.
-
+        </p>
         <p><em>traits.js</em> introduces traits without also introducing classes.
            In this library, traits are like Javascript's functions:
            anonymous, first-class and freely lexically nestable.
-
+        </p>
         <p>What about the roles of classes not normally supported by traits, such as
            instance-private state and constructors to initialize that state?
            These roles are already supported by Javascript's functions: you can nest
            traits inside functions that close over the required state, and you can use
            the function body as the "constructor".
            Here's an obligatory 'point-and-color' example:
+        </p>
 <pre class="prettyprint lang-js noborder">
 function makeColorTrait(col) {
   return Trait({
@@ -124,9 +126,10 @@ p.color() // 'red'
          The library does not depend on any browser-specific features.
          To see if it works in your browser, just
          <a href="traits.js/test.html">run the unit tests</a>.
+        </p>
 
          <!-- AddThis Button BEGIN -->
-         <p><a style="float: right" class="addthis_button" href="https://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bba2a662567686a"><img src="https://s7.addthis.com/static/btn/v2/lg-bookmark-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bba2a662567686a" async></script>
+         <p><a style="float: right" class="addthis_button" href="https://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bba2a662567686a"><img src="https://s7.addthis.com/static/btn/v2/lg-bookmark-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bba2a662567686a" async></script></p>
          <!-- AddThis Button END -->
 
       </div><!-- End content -->
