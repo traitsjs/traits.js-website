@@ -1,10 +1,10 @@
 # traits.js website
 
-Sources for the [traits.js website](http://traitsjs.github.io/traits.js-website/).
+Sources for the [traits.js website](https://traitsjs.github.io/traits.js-website/).
 
 ## Running locally
 
-To run locally: `jekyll serve`
+To run locally: [`jekyll serve`](https://jekyllrb.com/docs/quickstart/)
 
 To update the `traits.js` repo:
 1. After `git clone`/`git pull`, do `git submodule update`
@@ -12,7 +12,7 @@ To update the `traits.js` repo:
 3. and `git checkout master`.
 4. Now you can do `git pull`.
 5. To save your update, do `cd ..` and `git commit traits.js -m "updated traits.js"`
-  
+
 If you do work in the `traits.js` submodule:
 
 **Setup**:
