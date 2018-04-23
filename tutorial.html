@@ -68,7 +68,7 @@
         and of object-oriented programming in general.
         It does not assume detailed knowledge of traits in other languages,
         although this tutorial won't discuss their background, which is
-        <a href="http://code.google.com/p/es-lab/wiki/Traits#Background:_Traits">explained elsewhere</a>.
+        <a href="https://github.com/traitsjs/traits.js/#background-traits">explained elsewhere</a>.
 
         <h3>Part 1: An Enumerable Trait</h3>
 
@@ -129,7 +129,7 @@ a distinguished <a href="api.html#required">Trait.required</a> value.
 <p>Note that the implementation of map, filter and reduce invokes the required forEach method by means of a message sent to <tt>this</tt>. In the context of a trait, <tt>this</tt> refers to an instance object that will be composed from one or more traits. It is expected that <tt>this</tt> eventually defines all required methods. In part 2, we'll see how this is ensured.
 
 <p>You may have noticed that map and filter both return arrays, regardless of the type of
-abstract sequence to which they are applied. They don't return a mapped or filtered version of the original datatype. This can be fixed by parameterizing the trait explicitly with a constructor for the kind of sequence to which the trait is applied. Have a look at the completed <a href="http://code.google.com/p/es-lab/source/browse/trunk/src/traits/examples.js">example code</a> to see how such a parameterized trait could be constructed.
+abstract sequence to which they are applied. They don't return a mapped or filtered version of the original datatype. This can be fixed by parameterizing the trait explicitly with a constructor for the kind of sequence to which the trait is applied. Have a look at the completed <a href="https://github.com/traitsjs/traits.js/blob/master/examples/examples.js">example code</a> to see how such a parameterized trait could be constructed.
 
         <h3>Part 2: An Enumerable Interval</h3>
 
@@ -320,11 +320,11 @@ var t2 = Trait.resolve({ oldName: 'newName' }, t1);
       an equality operator for traits.
 
    <p>A complete version of the source code examples discussed in this tutorial can
-      be downloaded <a href="http://code.google.com/p/es-lab/source/browse/trunk/src/traits/examples.js">here</a>.
+      be downloaded <a href="https://github.com/traitsjs/traits.js/blob/master/examples/examples.js" download="download">here</a>.
 
    <p>If you're interested in the data format used by <em>traits.js</em> to
       represent traits, it is explained
-      <a href="http://code.google.com/p/es-lab/wiki/Traits#Traits_as_Property_Maps">
+      <a href="https://github.com/traitsjs/traits.js/#traits-as-property-maps">
       in some detail elsewhere</a>.
       Briefly, traits are represented not as opaque values, but as plain
       <em>property descriptor maps</em>. This is the same format as accepted by the
@@ -333,7 +333,7 @@ var t2 = Trait.resolve({ oldName: 'newName' }, t1);
       If anything, it means you can use <em>traits.js</em> as a simple library for
       manipulating arbitrary property descriptor maps.
 
-   <p>Read more about traits.js in the <a href="http://howtonode.org/traitjs">howtonode.org article</a> on traits.js.
+   <p><strike>Read more about traits.js in the <a href="http://howtonode.org/traitjs">howtonode.org article</a> on traits.js.</strike>
 
       <!-- AddThis Button BEGIN -->
       <p><a style="float: right" class="addthis_button" href="https://www.addthis.com/bookmark.php?v=250&amp;username=xa-4bba2a662567686a"><img src="https://s7.addthis.com/static/btn/v2/lg-bookmark-en.gif" width="125" height="16" alt="Bookmark and Share" style="border:0"/></a><script type="text/javascript" src="https://s7.addthis.com/js/250/addthis_widget.js#username=xa-4bba2a662567686a"></script>
