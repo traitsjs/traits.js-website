@@ -129,7 +129,7 @@ a distinguished <a href="api.html#required">Trait.required</a> value.
 <p>Note that the implementation of map, filter and reduce invokes the required forEach method by means of a message sent to <tt>this</tt>. In the context of a trait, <tt>this</tt> refers to an instance object that will be composed from one or more traits. It is expected that <tt>this</tt> eventually defines all required methods. In part 2, we'll see how this is ensured.
 
 <p>You may have noticed that map and filter both return arrays, regardless of the type of
-abstract sequence to which they are applied. They don't return a mapped or filtered version of the original datatype. This can be fixed by parameterizing the trait explicitly with a constructor for the kind of sequence to which the trait is applied. Have a look at the completed <a href="https://github.com/traitsjs/traits.js/blob/master/examples/examples.js">example code</a> to see how such a parameterized trait could be constructed.
+abstract sequence to which they are applied. They don't return a mapped or filtered version of the original datatype. This can be fixed by parameterizing the trait explicitly with a constructor for the kind of sequence to which the trait is applied. Have a look at the completed <a href="https://raw.githubusercontent.com/traitsjs/traits.js/master/examples/examples.js">example code</a> to see how such a parameterized trait could be constructed.
 
         <h3>Part 2: An Enumerable Interval</h3>
 
